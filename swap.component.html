@@ -1,0 +1,68 @@
+<!-- <p>liquidity works!</p> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 mx-auto">
+            <div class="card bg-dark">
+                <h1 class="text-center text-light">Swap</h1>
+                <div class="card-body">
+                    <form class="" #LiquidityFrom="ngForm">
+                        <br>
+                        <div class="card m-3">
+                            <div class="card-header">
+                                <label class="text-dark">INPUT:</label>
+                            </div>
+                            <div class="card-body">
+                                <div class=" row p-2">
+                                    <label class=" text-dark col-6">Balances:{{balance}} </label>
+                                    <select class="form-select bg-dark text-light" aria-label="Default select example"
+                                        name="tokenA" (change)="swapGetBalance($event)" required>
+                                        <option value="2">Select a currency</option>
+                                        <ng-container *ngFor="let tokenObj of getSymbolSwap">
+                                            <option [value]="tokenObj.tokenAddress">{{tokenObj.tokenSymbol}}</option>
+                                        </ng-container>
+                                    </select>
+                                    <br>
+                                    <input type="text" class="bg-dark text-light" [(ngModel)]="fromObj.tokenAmount"
+                                        #FromAmount="ngModel" (ngModelChange)="swapGetAmount('from')"
+                                        [ngModelOptions]="{standalone: true}" placeholder="Amount">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card m-3">
+                            <div class="card-header">
+                                <label class="text-dark">INPUT:</label>
+                            </div>
+                            <div class="card-body">
+                                <div class="row p-2">
+                                    <label class=" text-dark col-6">Balances:{{tokenBalance}} </label>
+                                    <select class="form-select bg-dark text-light" aria-label="Default select example"
+                                        name="tokenB" (change)="swapGetBalance($event)" required>
+                                        <option value="2">Select a currency</option>
+                                        <ng-container *ngFor="let tokenObj of getSymbolSwap">
+                                            <option [value]="tokenObj.tokenAddress">{{tokenObj.tokenSymbol}}</option>
+                                        </ng-container>
+                                    </select>
+                                    <br>
+                                    <input type="text" [(ngModel)]="toObj.tokenAmount"
+                                        (ngModelChange)="swapGetAmount('to')" #ToAmount="ngModel"
+                                        class="bg-dark text-light" [ngModelOptions]="{standalone: true}"
+                                        placeholder="Amount">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <a href="search">Import it.</a>
+                        </div>
+                        <div class="form-group m-3">
+                            <button type="button" class="form-control btn btn-danger" (click)="swapAdd()">Swap</button>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
