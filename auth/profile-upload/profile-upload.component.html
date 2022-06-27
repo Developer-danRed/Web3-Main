@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card bg-dark">
+        <h1 class="text-primary text-center p-3">updateProfile</h1>
+        <div class="card-body m-3">
+          <form #registerFromupdate="ngForm">
+            <!-- email  -->
+            <div class="form-group">
+              <label class=" text- text-center">Email: </label>
+              <input type="text" name="email" [(ngModel)]="userObj.email" #Email="ngModel"
+                Pattern="commonservice.pattern.email" class="form-control" placeholder="Enter The Eamil" required>
+              <span class="text-danger" *ngIf="(Email.touched || isValidUser) && Email.errors?.required">
+                Email is required
+              </span>
+              <span class="text-danger" *ngIf="Email.touched && Email.errors?.Email">
+                Enter a valid email address
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="p-2  text-primary">FirstName: </label>
+              <input type="text" name="firstname" placeholder="Enter The FirstName" [(ngModel)]="userObj.firstname"
+                #Firstname="ngModel" class="form-control" required>
+              <span class="text-danger" *ngIf="(Firstname.touched || isValidUser) && Firstname.errors?.required">
+                FirstName is required
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="p-2  text-primary">LastName: </label>
+              <input type="text" name="lastname" placeholder="Enter The LastName" [(ngModel)]="userObj.lastname"
+                #Lastname="ngModel" class="form-control" required>
+              <span class="text-danger" *ngIf="(Lastname.touched || isValidUser) && Lastname.errors?.required">
+                LastName is required
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="p-2  text-primary">Dob: </label>
+              <input type="date" name="data" [(ngModel)]="userObj.date" #Dob="ngModel" class="form-control" required>
+              <span class="text-danger" *ngIf="(Dob.touched || isValidUser) && Dob.errors?.required">
+                Dob is required
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="p-2  text-primary">Address: </label>
+              <input type="text" name="address" placeholder="Enter The Address" [(ngModel)]="userObj.address"
+                #Address="ngModel" class="form-control" required>
+              <span class="text-danger" *ngIf="(Address.touched || isValidUser) && Address.errors?.required">
+                Address is required
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="p-2  text-primary">BloodGruop: </label>
+              <input type="text" name="bloodgruop" placeholder="Enter The BloodGruop" [(ngModel)]="userObj.bloodgruop"
+                #Bloodgruop="ngModel" class="form-control" required>
+              <span class="text-danger" *ngIf="(Bloodgruop.touched || isValidUser) && Bloodgruop.errors?.required">
+                BloodGruop is required
+              </span>
+            </div>
+
+            <div class=" row from-group m-3  text-primary">
+              <h4>Please Select Your Gender :</h4>
+             <div class="col-6">
+              <input type="radio" name="gender" [(ngModel)]="userObj.gender" #Gender="ngModel" required value="Male">
+              <label for="Male">Male</label>
+              <input type="radio" name="gender" [(ngModel)]="userObj.gender" #Gender="ngModel" required value="Female">
+              <label for="Female">Female</label>
+            </div>
+              <span class="text-danger" *ngIf="(Gender.touched || isValidUser) && Gender.errors?.required">
+                Gender NotSelect is required
+              </span>
+            </div>
+            <div class="form-group m-2 text-center">
+              <input type="file" name="images" multiple (change)="selectImage($event)" class=" text-primary" />
+            </div>
+            <!-- button -->
+            <div class="form-group m-3">
+              <button type="button" class="form-control btn btn-primary" (click)="onSubmitUpdate()">submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

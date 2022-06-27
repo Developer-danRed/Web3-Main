@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar bg- m-2">
+    <div class="container-fluid m-2">
+        <a class="navbar-brand text-dark">walletConnection</a>
+        <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                <button class="btn btn-danger m-3" (click)="con()">connect</button>
+                <button class="btn btn-primary m-3" (click)="liq()">liquidity</button>
+                <button class="btn btn-secondary m-3" (click)="swap()">Swap</button>
+                <button class="btn btn-warning m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Address:
+                    {{shortaddress}}</button>
+                <button class="btn btn-dark m-3">{{authService.walletbalance}}</button>
+            </span>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">YourWallet</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <!-- <img src="../../../assets/images/copy.png" data-bs-toggle="tooltip"
+                                    data-bs-placement="left" title="copyAddress" (click)="CopyAddress()" height="20px"
+                                    weight="20px" alt="" value=" 0xea3f1d0cd0118550bee5c6436097030c55ee0934"> -->
+                                <button class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
+                                    title="copyied" (click)="copyInputMessage(userinput)" value="click to copy">
+                                    copy</button>
+                                <input type="text" #userinput value="{{walletAddress}}">
+                            </div>
+                            <br>
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <a
+                                        href="https://etherscan.io/address/0xea3f1d0cd0118550bee5c6436097030c55ee0934#analytics">addressEthScan</a>
+                                </div>
+                                <div class="col-6">
+                                    <a
+                                        href="https://kovan.etherscan.io/address/0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D#readContract">tokenTransaction</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

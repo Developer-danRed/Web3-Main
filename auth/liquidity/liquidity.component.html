@@ -1,0 +1,113 @@
+<!-- <p>liquidity works!</p> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 mx-auto">
+            <div class="card bg-secondary">
+                <h1 class="text-center text-light">Liquidity</h1>
+                <div class="card-body">
+                    <form class="" #LiquidityFrom="ngForm">
+                        <br>
+                        <div class="card m-3">
+                            <div class="card-header">
+                                <h3 class="text-dark">Input:</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class=" row p-2">
+                                    <label class=" text-dark col-6">Balances:{{balance}} </label>
+                                    <select class="form-select" aria-label="Default select example" name="tokenA"
+                                        (change)="getBalance($event)" required>
+                                        <option value="2">Select a currency</option>
+                                        <ng-container *ngFor="let tokenObj of getTokens">
+                                            <option [value]="tokenObj.tokenAddress">{{tokenObj.tokenSymbol}}</option>
+                                        </ng-container>
+                                    </select>
+                                    <br>
+                                    <input type="text" (change)="poolTokenA($event)" [(ngModel)]="userObj.fromAmount"
+                                        #FromAmount="ngModel" [ngModelOptions]="{standalone: true}"
+                                        placeholder="Amount">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card m-3">
+                            <div class="card-header">
+                                <h3 class="text-dark">Input:</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row p-2">
+                                    <label class=" text-dark col-6">Balances:{{tokenBalance}} </label>
+                                    <select class="form-select" aria-label="Default select example" name="tokenB"
+                                        (change)="getBalance($event)" required>
+                                        <option value="2">Select a currency</option>
+                                        <ng-container *ngFor="let tokenObj of getTokens">
+                                            <option [value]="tokenObj.tokenAddress">{{tokenObj.tokenSymbol}}</option>
+                                        </ng-container>
+                                    </select>
+                                    <br>
+                                    <input  type="text" [(ngModel)]="userObj.toAmount" #ToAmount="ngModel"
+                                        (change)="poolTokenB($event)" [ngModelOptions]="{standalone: true}"
+                                        placeholder="Amount">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-3">
+                            <table class="table text-light">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th scope="col">
+                                            {{fromToken.tokenSymbol}}-pair-{{toToken.tokenSymbol}}</th>
+                                        <th scope="col">
+                                            {{toToken.tokenSymbol}}-pair-{{fromToken.tokenSymbol}}</th>
+                                        <th scope="col">sharePool</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="text-center">
+                                        <td>{{liquidityObj.fromPerToken}}</td>
+                                        <td>{{liquidityObj.toPerToken}}</td>
+                                        <td>{{liquidityObj.sharePool}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center">
+                            <button  type="button" class="btn btn-danger m-3" (click)="sea()">Import it.</button>
+                            <button type="button" class=" btn btn-success m-3" (click)="removeLiquidity()">RomoveLiquidity</button>
+                        </div>
+                        <div class="form-group m-3">
+                            <button type="button" class="form-control btn btn-warning"
+                                (click)="tokenApproveLiquidity()">Liquidity</button>
+                        </div>
+
+                        <div class="text-center m-3">
+                            <div class="accordion-item form-control">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                    <button class="accordion-button collapsed bg-dark text-primary" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseTwo" (click)="reseve()">
+                                        Your Liquidity Details....
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingTwo">
+                                    <div class="accordion-body bg-dark text-primary">
+                                        <div *ngFor="let item of getSymbol">
+                                            {{item.fromtokenSymbol}}/{{item.totokenSymbol}}
+                                        </div>
+                                        <div *ngIf="liquidityReserveData">
+                                            <p>pooledDAI:{{liquidityReserveData.fromAmountPooled}}</p>
+                                            <p>pooledUNI:{{liquidityReserveData.toAmountPooled}}</p>
+                                            <p>yourPooledTokens:{{liquidityReserveData.pairBalance}}</p>
+                                            <p>yourPooledShare:{{liquidityReserveData.pollSharePercentageDisplay}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

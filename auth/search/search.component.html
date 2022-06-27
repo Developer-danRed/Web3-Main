@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card-body">
+                <form class="m-2 p-2" #searchForm="ngForm">
+                    <div class="card">
+                        <div class="card-header bg-dark">
+                            <h1 class=" text-primary m-3 p-3">SearchImportToken</h1>
+                        </div>
+                        <div class="card-body m-3">
+                            <div class="form-inline">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                                <input class="form-control bg-dark col-6" name="tokenAddress"
+                                    [(ngModel)]="searchToken" aria-label="Search" placeholder="PasteTokenAddress">
+                                    <br>
+                                <button class="btn btn-primary" (click)="searchTokens()">search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
